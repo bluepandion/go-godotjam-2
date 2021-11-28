@@ -20,7 +20,7 @@ func set_target(t: String):
 	target = t
 	_target = get_node_or_null(t)
 	if _target:
-		print(_target)
+		#print(_target)
 		set_process(true)
 	else:
 		set_process(false)

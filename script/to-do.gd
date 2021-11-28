@@ -10,32 +10,32 @@
 # [#] Energy -> Rotation speed progression
 # [#] Score
 # [#] Heat
-# [ ] Energy
+# [#] Energy
 
 # [X] Spawner
 
 # [X] Plasma ball
 # [ ] Plasma ball destroy FX
 # [ ] Plasma ball damage FX
-# [ ] Overheat FX
+# [#] Overheat FX
 
 # [ ]
 # [ ]
 
 # [ ]
 # [ ] Game Over
-# [ ] Pause
-# [ ] Main menu
-# [ ] Start
-# [ ] Instructions
+
+# [#] Main menu
+# [#] Start
+# [#] Instructions
 # [ ] 
 # [ ] Sounds
 # [ ] Music
 # [ ]
 # [ ] Logo
-# [ ] Player ship
+# [#] Player ship
 # [ ] Player destroy FX
 # [ ] Player camera sway
 # [ ]
-# [ ] Plasma ring FX and progression
+# [#] Plasma ring FX and progression
 

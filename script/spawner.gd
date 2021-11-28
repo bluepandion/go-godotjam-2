@@ -16,7 +16,7 @@ onready var targets = [
 
 var spread = PI/4
 var interval = 1.0
-var time = 1.0
+var time = 1.5
 var _base_transform
 var _rotator
 

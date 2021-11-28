@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://particles/plasma_ring_particles.tres" type="Material" id=1]
 [ext_resource path="res://gltf/reactor.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://script/rotator.gd" type="Script" id=3]
+[ext_resource path="res://material/plasma_ring.tres" type="Material" id=4]
 [ext_resource path="res://script/plasma.gd" type="Script" id=6]
 [ext_resource path="res://scene/pillar_column.tscn" type="PackedScene" id=7]
 
@@ -36,47 +38,8 @@ ao_light_affect = 0.0
 ao_on_uv2 = false
 ao_texture_channel = 0
 
-[sub_resource type="Curve" id=10]
-_data = [ Vector2( 0, 0 ), 0.0, 11.4983, 0, 0, Vector2( 0.142857, 0.944318 ), 0.425207, 0.425207, 0, 0, Vector2( 0.708455, 0.517045 ), -2.01765, -2.01765, 0, 0, Vector2( 0.988338, 0.0170454 ), 0.0742423, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=11]
-width = 128
-curve = SubResource( 10 )
-
-[sub_resource type="ParticlesMaterial" id=7]
-lifetime_randomness = 0.3
-emission_shape = 5
-emission_ring_radius = 37.0
-emission_ring_inner_radius = 36.0
-emission_ring_height = 1.0
-emission_ring_axis = Vector3( 0, 1, 0 )
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 2.0
-initial_velocity_random = 0.5
-angular_velocity = 103.42
-radial_accel = -1.1
-radial_accel_random = 0.49
-tangential_accel = 4.42
-angle = 350.1
-angle_random = 0.38
-scale = 2.0
-scale_random = 0.83
-scale_curve = SubResource( 11 )
-hue_variation = 0.1
-
-[sub_resource type="SpatialMaterial" id=9]
-flags_transparent = true
-params_blend_mode = 1
-emission_enabled = true
-emission = Color( 1, 0.4, 0, 1 )
-emission_energy = 7.56
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="CubeMesh" id=8]
-material = SubResource( 9 )
-size = Vector3( 0.5, 0.5, 0.5 )
+[sub_resource type="QuadMesh" id=7]
+material = ExtResource( 4 )
 
 [node name="ReactorScene" type="Spatial"]
 
@@ -103,8 +66,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0947495, 0, 0 )
 amount = 512
 lifetime = 1.85
 visibility_aabb = AABB( -60, -15, -60, 120, 30, 120 )
-process_material = SubResource( 7 )
-draw_pass_1 = SubResource( 8 )
+process_material = ExtResource( 1 )
+draw_pass_1 = SubResource( 7 )
 script = ExtResource( 6 )
 
 [node name="Pillars" type="Spatial" parent="Playfield/Rotator"]

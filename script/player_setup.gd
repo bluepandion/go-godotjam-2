@@ -16,16 +16,19 @@ func _physics_process(delta):
 	var mul = clamp(GameState.speed * 0.5, 1.0, 8.0)
 	pathfollow.unit_offset = clamp(pathfollow.unit_offset + _speed.x * delta * mul, 0, 1)
 	_speed.x = lerp(_speed.x, 0, delta * 40 * mul)
-	if 	Input.is_action_pressed("ui_left"):
-		#_speed.x = -1
-		_speed.x = lerp(_speed.x, -1, delta * 80 * mul)
-	if 	Input.is_action_pressed("ui_right"):
-		#_speed.x = 1
-		_speed.x = lerp(_speed.x, 1, delta * 80 * mul)
-	if Input.is_action_just_pressed("ui_accept"):
-		shoot()
-
-
+	if GameState.speed > 0:
+		if 	Input.is_action_pressed("ui_left"):
+			#_speed.x = -1
+			_speed.x = lerp(_speed.x, -1, delta * 80 * mul)
+		if 	Input.is_action_pressed("ui_right"):
+			#_speed.x = 1
+			_speed.x = lerp(_speed.x, 1, delta * 80 * mul)
+		if Input.is_action_just_pressed("ui_select"):
+			shoot()	
+	if Input.is_action_pressed("ui_escape"):
+		queue_free()
+		GameState.main_menu()
+		
 func shoot():
 	var b = bullet.instance()
 	var root = get_tree().current_scene

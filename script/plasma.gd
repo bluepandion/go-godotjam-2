@@ -6,7 +6,7 @@ func _ready():
 
 func _process(_delta):
 	process_material.emission_ring_height = 1.0 + GameState.heat * 16.0
-	process_material.scale = 2 + GameState.heat * 4.0
+	process_material.scale = 3 + GameState.heat * 4.0
 	if GameState.speed == 0:
 		process_material.scale = 14
 		lifetime = 0.5

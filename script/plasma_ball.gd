@@ -4,7 +4,7 @@ extends RigidBody
 onready var shape = $CollisionShape
 
 var distance = 12
-var drop_speed = 2
+var drop_speed = 1.5
 var speed = 1
 var _origin: Vector3
 var angle: float
