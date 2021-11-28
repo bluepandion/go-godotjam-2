@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://script/heat_area.gd" type="Script" id=1]
+[ext_resource path="res://script/damage_area.gd" type="Script" id=2]
+[ext_resource path="res://scene/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://script/look_at.gd" type="Script" id=4]
+[ext_resource path="res://script/player_setup.gd" type="Script" id=5]
+[ext_resource path="res://scene/spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://script/catch_area.gd" type="Script" id=7]
+[ext_resource path="res://script/hud.gd" type="Script" id=8]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.7248, -1.06485, -5.48363e-06, 0, 0, 0, 0, 0, 0, 7.00305, -4.0025, -5.48363e-06, 0, 0, 0, 0, 0, 0, 9.35696, -7.89265, -5.48363e-06, 0, 0, 0, 0, 0, 0, 10.6342, -12.3204, -5.48363e-06, 0, 0, 0, 0, 0, 0, 10.6342, -16.5353, -5.48363e-06, 0, 0, 0, 0, 0, 0, 9.39953, -20.5799, -5.48363e-06, 0, 0, 0, 0, 0, 0, 7.31337, -24.4116, -5.48363e-06, 0, 0, 0, 0, 0, 0, 4.37572, -27.3919, -5.48363e-06, 0, 0, 0, 0, 0, 0, -0.702976, -28.483, -5.48363e-06 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 16, 16, 12 )
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 16, 16, 2 )
+
+[node name="PlayerSetup" type="Position3D"]
+script = ExtResource( 5 )
+
+[node name="Path" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3, 14.3099, -0.783655 )
+curve = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PathFollow" type="PathFollow" parent="Path"]
+transform = Transform( -3.46496e-06, 0.866968, 0.498356, 6.73283e-08, 0.498362, -0.866959, -0.999998, -2.97046e-06, -1.78516e-06, 10.6342, -14.8664, -5.48363e-06 )
+offset = 19.9691
+rotation_mode = 0
+
+[node name="CameraPos" type="Position3D" parent="Path/PathFollow"]
+transform = Transform( -0.00286885, 0.157919, 0.98745, -0.527989, -0.838834, 0.132617, 0.849256, -0.520988, 0.0857867, 0, 0, 0 )
+script = ExtResource( 4 )
+target = "../../../Target"
+up = "../../../Up"
+
+[node name="Camera" type="Camera" parent="Path/PathFollow/CameraPos"]
+transform = Transform( 1, -9.31323e-09, 0, 2.51457e-08, 1, 4.47035e-08, 2.23517e-08, 0, 1, -0.503376, 5.42902, 6.34097 )
+current = true
+fov = 90.9
+
+[node name="PlayerPos" type="Position3D" parent="Path/PathFollow"]
+transform = Transform( -0.0165568, 0.0071038, 0.99984, -0.52792, -0.849291, -0.00270792, 0.849143, -0.527885, 0.017812, 0, 0, 0 )
+script = ExtResource( 4 )
+target = "../PlayerLookAt"
+up = "../../../Up"
+
+[node name="Player" parent="Path/PathFollow/PlayerPos" instance=ExtResource( 3 )]
+
+[node name="OmniLight2" type="OmniLight" parent="Path/PathFollow/PlayerPos"]
+transform = Transform( -0.0345139, -0.999267, 0.0165569, -0.999383, 0.0344002, -0.00710032, 0.00652556, -0.0167917, -0.999838, -0.812748, 5.38375, 2.63849 )
+light_energy = 0.301
+light_specular = 7.459
+light_bake_mode = 0
+omni_range = 23.416
+
+[node name="CatchArea" type="Area" parent="Path/PathFollow/PlayerPos"]
+transform = Transform( -0.034389, -0.999272, 0.0165623, -0.999409, 0.0343936, 1.86265e-09, -0.000569639, -0.0165526, -0.999863, 0.0513933, 0.910896, -1.20985 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Path/PathFollow/PlayerPos/CatchArea"]
+shape = SubResource( 14 )
+
+[node name="PlayerLookAt" type="Position3D" parent="Path/PathFollow"]
+transform = Transform( 1.00001, -1.13687e-12, -1.47793e-12, -3.18323e-12, 1, 2.68226e-07, -9.09495e-13, -3.2782e-07, 1, -21.3927, 0.0579395, -0.381107 )
+
+[node name="Target" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3371, 0, 65.5608 )
+
+[node name="Up" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.823, 0, -0.784 )
+
+[node name="HeatArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8968, 0, 8.41967 )
+monitorable = false
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HeatArea"]
+transform = Transform( 0.913062, 0, -0.407821, 0, 1, 0, 0.407821, 0, 0.913062, -1.57013, 0, 7.76634 )
+shape = SubResource( 12 )
+
+[node name="DamageArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8968, 0, -4.47482 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DamageArea"]
+shape = SubResource( 13 )
+
+[node name="Spawner" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.275822, 0, -0.961209, 0, 1, 0, 0.961209, 0, 0.275822, 0, 0, 0 )
+rotator = NodePath("../Rotator")
+
+[node name="Hud" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enable = true
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Hud"]
+margin_left = 21.0
+margin_top = 28.0
+margin_right = 164.0
+margin_bottom = 59.0
+text = "Energy output
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Energy" type="Label" parent="Hud"]
+margin_left = 142.0
+margin_top = 28.0
+margin_right = 285.0
+margin_bottom = 59.0
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Hud"]
+margin_left = 21.0
+margin_top = 59.0
+margin_right = 164.0
+margin_bottom = 90.0
+text = "Heat
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heat" type="Label" parent="Hud"]
+margin_left = 142.0
+margin_top = 59.0
+margin_right = 282.0
+margin_bottom = 90.0
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Hud"]
+margin_left = 21.0
+margin_top = 91.0
+margin_right = 164.0
+margin_bottom = 122.0
+text = "Score
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Hud"]
+margin_left = 142.0
+margin_top = 91.0
+margin_right = 282.0
+margin_bottom = 122.0
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}

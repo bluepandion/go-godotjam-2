@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scene/pillar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gltf/reactor.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://script/pillar_column.gd" type="Script" id=3]
+
+[node name="PillarColumn" type="Position3D"]
+script = ExtResource( 3 )
+
+[node name="Pillar6" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0.634893, -0.772601, 0, 0.772601, 0.634893, 1, 2.7752e-08, -3.37714e-08, 46.2258, -11.2825, -7.62873e-07 )
+
+[node name="Pillar5" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0.369617, -0.929184, 0, 0.929184, 0.369617, 1, 1.61565e-08, -4.06159e-08, 49.2618, -6.06352, -7.4452e-07 )
+
+[node name="Pillar4" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.4508, -0.422868, -7.48295e-07 )
+
+[node name="Pillar1" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, -0.368336, -0.929693, 0, 0.929693, -0.368336, 1, -1.61005e-08, -4.06382e-08, 49.3635, 5.15581, -7.36451e-07 )
+
+[node name="Pillar2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, -0.570198, -0.821508, 0, 0.821508, -0.570198, 1, -2.49241e-08, -3.59092e-08, 46.5121, 10.5953, -7.46566e-07 )
+
+[node name="reactor" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="OmniLight" type="SpotLight" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 47.6324, -0.104118, 0.32085 )
+light_color = Color( 0.952941, 0.211765, 0.0666667, 1 )
+light_energy = 2.0
+spot_range = 30.891
+spot_attenuation = 0.615572
+spot_angle = 52.46

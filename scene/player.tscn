@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gltf/ship.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.494118, 0.74902, 1, 1 )
+metallic = 1.0
+roughness = 0.44
+
+[node name="Player" type="Position3D"]
+transform = Transform( 1, -1.69501e-07, 7.45058e-09, 8.9407e-08, 1, 7.45058e-08, -1.49012e-08, 1.49012e-08, 1, 1.90735e-06, 1.7816, 9.53674e-07 )
+
+[node name="ship" type="MeshInstance" parent="."]
+transform = Transform( 1.5, -1.66534e-15, 0, 1.66534e-15, 1.5, 0, 0, 0, 1.5, -4.63947e-08, -0.579252, 0 )
+cast_shadow = 0
+mesh = ExtResource( 1 )
+material/0 = SubResource( 1 )
