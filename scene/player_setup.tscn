@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://script/heat_area.gd" type="Script" id=1]
 [ext_resource path="res://script/damage_area.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://script/catch_area.gd" type="Script" id=7]
 [ext_resource path="res://script/hud.gd" type="Script" id=8]
 [ext_resource path="res://script/player_camera.gd" type="Script" id=9]
+[ext_resource path="res://script/lazy_camera.gd" type="Script" id=10]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -40,18 +41,6 @@ transform = Transform( -3.46496e-06, 0.866968, 0.498356, 6.73283e-08, 0.498362, 
 offset = 19.9691
 rotation_mode = 0
 
-[node name="CameraPos" type="Position3D" parent="Path/PathFollow"]
-transform = Transform( -0.00286885, 0.157919, 0.98745, -0.527989, -0.838834, 0.132617, 0.849256, -0.520988, 0.0857867, 0, 0, 0 )
-script = ExtResource( 4 )
-target = "../../../Target"
-up = "../../../Up"
-
-[node name="Camera" type="Camera" parent="Path/PathFollow/CameraPos"]
-transform = Transform( 1, -9.31323e-09, 0, 2.51457e-08, 1, 4.47035e-08, 2.23517e-08, 0, 1, -0.503376, 5.42902, 6.34097 )
-current = true
-fov = 90.9
-script = ExtResource( 9 )
-
 [node name="PlayerPos" type="Position3D" parent="Path/PathFollow"]
 transform = Transform( -0.0165568, 0.0071038, 0.99984, -0.52792, -0.849291, -0.00270792, 0.849143, -0.527885, 0.017812, 0, 0, 0 )
 script = ExtResource( 4 )
@@ -76,6 +65,23 @@ shape = SubResource( 14 )
 
 [node name="PlayerLookAt" type="Position3D" parent="Path/PathFollow"]
 transform = Transform( 1.00001, -1.13687e-12, -1.47793e-12, -3.18323e-12, 1, 2.68226e-07, -9.09495e-13, -3.2782e-07, 1, -21.3927, 0.0579395, -0.381107 )
+
+[node name="CameraPos" type="Position3D" parent="Path/PathFollow"]
+transform = Transform( -0.00286885, 0.157919, 0.98745, -0.527989, -0.838834, 0.132617, 0.849256, -0.520988, 0.0857867, 0, 0, 0 )
+script = ExtResource( 4 )
+target = "../../../Target"
+up = "../../../Up"
+
+[node name="Camera" type="Camera" parent="Path/PathFollow/CameraPos"]
+transform = Transform( 1, -9.31323e-09, 0, 2.51457e-08, 1, 4.47035e-08, 2.23517e-08, 0, 1, -0.503376, 5.42902, 6.34097 )
+current = true
+fov = 90.9
+script = ExtResource( 9 )
+
+[node name="PathFollowCamera" type="PathFollow" parent="Path"]
+transform = Transform( 0.305539, 0.95218, 2.70269e-07, -0.95218, 0.305539, 1.04979e-06, 9.17009e-07, -5.78095e-07, 1, 10.6342, -14.7001, -5.48363e-06 )
+offset = 19.8028
+script = ExtResource( 10 )
 
 [node name="Target" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3371, 0, 65.5608 )

@@ -23,7 +23,7 @@
 # [ ]
 
 # [ ]
-# [ ] Game Over
+# [X] Game Over
 
 # [#] Main menu
 # [#] Start
@@ -39,3 +39,4 @@
 # [ ]
 # [#] Plasma ring FX and progression
 
+# [ ] Fonts

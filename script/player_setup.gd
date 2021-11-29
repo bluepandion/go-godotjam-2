@@ -15,7 +15,7 @@ func _ready():
 func _physics_process(delta):
 	var mul = clamp(GameState.speed * 0.5, 1.0, 8.0)
 	pathfollow.unit_offset = clamp(pathfollow.unit_offset + _speed.x * delta * mul, 0, 1)
-	_speed.x = lerp(_speed.x, 0, delta * 40 * mul)
+	_speed.x = lerp(_speed.x, 0, delta * 10 * mul)
 	if GameState.speed > 0:
 		if 	Input.is_action_pressed("ui_left"):
 			#_speed.x = -1
