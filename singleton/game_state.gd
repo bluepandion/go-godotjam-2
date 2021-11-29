@@ -19,8 +19,8 @@ var speed_step: float = 1.0
 var high_score = 10000
 
 const SPEED_STEPPER = 0.95
-const SPEED_INCREASE = 0.075
-const HEAT_INCREASE = 0.05
+const SPEED_INCREASE = 0.07
+const HEAT_INCREASE = 0.02
 
 func main_menu():
 	speed = 0.25
@@ -28,6 +28,7 @@ func main_menu():
 	emit_signal("main_menu")
 
 func start_game():
+	speed_step = 1.0
 	speed = 1.0
 	score = 0
 	heat = 0
@@ -35,6 +36,10 @@ func start_game():
 	emit_signal("game_started")
 	emit_signal("hud_updated")
 
+func add_energy_score():
+	score += int(speed*111)
+	emit_signal("hud_updated")
+	
 func collect_plasma():
 	print("Plasma Collected")
 	
@@ -42,7 +47,7 @@ func collect_plasma():
 	speed_step *= SPEED_STEPPER
 	print(speed)
 	
-	score += 100 * (speed * 10)
+	score += 500
 	emit_signal("speed_changed")
 	emit_signal("energy_increased")
 	emit_signal("score_changed")

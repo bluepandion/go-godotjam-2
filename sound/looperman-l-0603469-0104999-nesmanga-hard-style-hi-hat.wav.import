@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-0603469-0104999-nesmanga-hard-style-hi-hat.wav-46636d6ddd7fbd8b805a4337712b4973.sample"
+
+[deps]
+
+source_file="res://sound/looperman-l-0603469-0104999-nesmanga-hard-style-hi-hat.wav"
+dest_files=[ "res://.import/looperman-l-0603469-0104999-nesmanga-hard-style-hi-hat.wav-46636d6ddd7fbd8b805a4337712b4973.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -8,6 +8,7 @@ var time = duration
 
 func _ready():
 	set_process(true)
+	assert( GameState.connect("game_over", self, "_game_over") == OK )
 
 func _process(delta):
 	time -= delta
@@ -16,3 +17,5 @@ func _process(delta):
 		set_process(false)
 	fov = target_fov + lerp(0, start_fov, time / duration)
 	
+func _game_over():
+	$SfxDie.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://script/heat_area.gd" type="Script" id=1]
 [ext_resource path="res://script/damage_area.gd" type="Script" id=2]
@@ -10,6 +10,13 @@
 [ext_resource path="res://script/hud.gd" type="Script" id=8]
 [ext_resource path="res://script/player_camera.gd" type="Script" id=9]
 [ext_resource path="res://script/lazy_camera.gd" type="Script" id=10]
+[ext_resource path="res://fonts/text-medium-dynamicfont.tres" type="DynamicFont" id=11]
+[ext_resource path="res://fonts/logo-dynamicfont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://script/player_light.gd" type="Script" id=13]
+[ext_resource path="res://sound/start.wav" type="AudioStream" id=14]
+[ext_resource path="res://sound/plasma_collect.wav" type="AudioStream" id=15]
+[ext_resource path="res://sound/plasma_hit.wav" type="AudioStream" id=16]
+[ext_resource path="res://sound/die.wav" type="AudioStream" id=17]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -50,18 +57,25 @@ up = "../../../Up"
 [node name="Player" parent="Path/PathFollow/PlayerPos" instance=ExtResource( 3 )]
 
 [node name="OmniLight2" type="OmniLight" parent="Path/PathFollow/PlayerPos"]
-transform = Transform( -0.0345139, -0.999267, 0.0165569, -0.999383, 0.0344002, -0.00710032, 0.00652556, -0.0167917, -0.999838, -0.812748, 5.38375, 2.63849 )
-light_energy = 0.301
+transform = Transform( -0.0345139, -0.999267, 0.0165569, -0.999383, 0.0344002, -0.00710032, 0.00652556, -0.0167917, -0.999838, -0.77697, 5.10389, -0.0639186 )
+light_energy = 0.5
 light_specular = 7.459
 light_bake_mode = 0
-omni_range = 23.416
+omni_range = 10.0
+script = ExtResource( 13 )
 
 [node name="CatchArea" type="Area" parent="Path/PathFollow/PlayerPos"]
 transform = Transform( -0.034389, -0.999272, 0.0165623, -0.999409, 0.0343936, 1.86265e-09, -0.000569639, -0.0165526, -0.999863, 0.0513933, 0.910896, -1.20985 )
 script = ExtResource( 7 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Path/PathFollow/PlayerPos/CatchArea"]
+transform = Transform( 1, 2.27374e-13, 0, 2.27374e-13, 1, -1.45519e-11, -4.65661e-10, 1.45519e-11, 1, 0, 0, 0 )
 shape = SubResource( 14 )
+
+[node name="SfxCollect" type="AudioStreamPlayer3D" parent="Path/PathFollow/PlayerPos/CatchArea"]
+stream = ExtResource( 15 )
+unit_db = 20.0
+bus = "game"
 
 [node name="PlayerLookAt" type="Position3D" parent="Path/PathFollow"]
 transform = Transform( 1.00001, -1.13687e-12, -1.47793e-12, -3.18323e-12, 1, 2.68226e-07, -9.09495e-13, -3.2782e-07, 1, -21.3927, 0.0579395, -0.381107 )
@@ -77,6 +91,19 @@ transform = Transform( 1, -9.31323e-09, 0, 2.51457e-08, 1, 4.47035e-08, 2.23517e
 current = true
 fov = 90.9
 script = ExtResource( 9 )
+
+[node name="SfxStart" type="AudioStreamPlayer3D" parent="Path/PathFollow/CameraPos/Camera"]
+transform = Transform( -0.0345181, -0.9994, 0.00286887, -0.98688, 0.0336324, -0.157915, 0.157724, -0.00828216, -0.987449, 0, 0, 0 )
+stream = ExtResource( 14 )
+unit_db = 4.0
+autoplay = true
+bus = "game"
+
+[node name="SfxDie" type="AudioStreamPlayer3D" parent="Path/PathFollow/CameraPos/Camera"]
+transform = Transform( -0.0345181, -0.9994, 0.00286887, -0.98688, 0.0336324, -0.157915, 0.157724, -0.00828216, -0.987449, 0, 0, 0 )
+stream = ExtResource( 17 )
+unit_db = 1.0
+bus = "game"
 
 [node name="PathFollowCamera" type="PathFollow" parent="Path"]
 transform = Transform( 0.305539, 0.95218, 2.70269e-07, -0.95218, 0.305539, 1.04979e-06, 9.17009e-07, -5.78095e-07, 1, 10.6342, -14.7001, -5.48363e-06 )
@@ -105,6 +132,11 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="DamageArea"]
 shape = SubResource( 13 )
 
+[node name="SfxHit" type="AudioStreamPlayer" parent="DamageArea"]
+stream = ExtResource( 16 )
+volume_db = -6.76
+bus = "game"
+
 [node name="Spawner" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.126389, 0, -0.991981, 0, 1, 0, 0.991981, 0, 0.126389, 0, 0, 0 )
 rotator = NodePath("../Rotator")
@@ -115,67 +147,89 @@ follow_viewport_enable = true
 script = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="Hud"]
-margin_left = 21.0
-margin_top = 28.0
-margin_right = 164.0
-margin_bottom = 59.0
+modulate = Color( 0.0980392, 0.792157, 0.952941, 1 )
+anchor_left = 0.05
+anchor_top = 0.025
+anchor_right = 0.3
+anchor_bottom = 0.025
+custom_fonts/font = ExtResource( 11 )
 text = "Energy output
 "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Energy" type="Label" parent="Hud"]
-margin_left = 142.0
-margin_top = 28.0
-margin_right = 285.0
-margin_bottom = 59.0
+modulate = Color( 0.0980392, 0.792157, 0.952941, 1 )
+anchor_left = 0.05
+anchor_top = 0.025
+anchor_right = 0.3
+anchor_bottom = 0.025
+margin_top = 30.0
+custom_fonts/font = ExtResource( 11 )
 text = "0
 "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="Hud"]
-margin_left = 21.0
-margin_top = 59.0
-margin_right = 164.0
-margin_bottom = 90.0
+modulate = Color( 0.972549, 0.698039, 0.309804, 1 )
+anchor_left = 0.7
+anchor_top = 0.025
+anchor_right = 0.95
+anchor_bottom = 0.025
+custom_fonts/font = ExtResource( 11 )
 text = "Heat
 "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Heat" type="Label" parent="Hud"]
-margin_left = 142.0
-margin_top = 59.0
-margin_right = 282.0
-margin_bottom = 90.0
+modulate = Color( 0.972549, 0.698039, 0.309804, 1 )
+anchor_left = 0.7
+anchor_top = 0.025
+anchor_right = 0.95
+anchor_bottom = 0.025
+margin_top = 30.0
+custom_fonts/font = ExtResource( 11 )
 text = "0
 "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label5" type="Label" parent="Hud"]
-margin_left = 21.0
-margin_top = 91.0
-margin_right = 164.0
-margin_bottom = 122.0
+anchor_left = 0.3
+anchor_top = 0.025
+anchor_right = 0.7
+anchor_bottom = 0.1
+margin_left = -0.200012
+margin_right = -0.400024
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 11 )
 text = "Score
 "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score" type="Label" parent="Hud"]
-margin_left = 142.0
-margin_top = 91.0
-margin_right = 282.0
-margin_bottom = 122.0
+anchor_left = 0.3
+anchor_top = 0.025
+anchor_right = 0.7
+anchor_bottom = 0.025
+margin_top = 30.0
+custom_fonts/font = ExtResource( 11 )
 text = "0
 "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -189,13 +243,26 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Hud/GameOver"]
-anchor_top = 0.4
+modulate = Color( 1, 0.0196078, 0.0196078, 1 )
+anchor_top = 0.2
 anchor_right = 1.0
 anchor_bottom = 0.6
-text = "GAME OVER
+custom_fonts/font = ExtResource( 12 )
+text = "REACTOR
+MELTDOWN"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-Press ESC to continue
-"
+[node name="Label2" type="Label" parent="Hud/GameOver"]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.6
+margin_top = 300.0
+custom_fonts/font = ExtResource( 11 )
+text = "Press ESC to continue"
 align = 1
 valign = 1
 __meta__ = {

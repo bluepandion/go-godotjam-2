@@ -32,11 +32,11 @@
 # [ ] Sounds
 # [ ] Music
 # [ ]
-# [ ] Logo
+# [#] Logo
 # [#] Player ship
-# [ ] Player destroy FX
-# [ ] Player camera sway
+# [#] Player destroy FX
+# [#] Player camera sway
 # [ ]
 # [#] Plasma ring FX and progression
 
-# [ ] Fonts
+# [#] Fonts

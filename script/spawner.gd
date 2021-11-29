@@ -19,6 +19,8 @@ var interval = 1.0
 var time = 1.5
 var _base_transform
 var _rotator
+var prev_spawn_angle = 0
+const ANGLES = 3
 
 func _ready():
 	_base_transform = transform
@@ -27,22 +29,28 @@ func _ready():
 	
 
 func _process(_delta):
-	time -= _delta
+	time -= _delta * (1.0 + (GameState.speed - 1.0) * 1.0)
 	if time < 0:
-		time = interval / (1.0 + (GameState.speed - 1.0) * 0.75)
+		time = interval 
 		spawn()
 
-func spawn():	
+func spawn():
+	if GameState.speed < 1:
+		return
 	#transform = _base_transform.rotated(Vector3(0,0,1), rand_range(-dispersion, dispersion))
 
 	#print("Spawn plasma")
 	var plasma = plasma_ball.instance()
 	add_child(plasma)
 
-	var angle = floor(rand_range(-3, 3)) / 3 * spread
+	var angle = floor(rand_range(-ANGLES, ANGLES))
+	if abs(angle-prev_spawn_angle) > ANGLES:
+		angle = 0
+	prev_spawn_angle = angle
+	
 	plasma.global_transform = global_transform
 	plasma.initialize(origin.global_transform, 1.0)
-	plasma.angle = angle
+	plasma.angle = angle / 3 * spread
 			
 		
 	

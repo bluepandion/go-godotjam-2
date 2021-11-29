@@ -7,12 +7,18 @@ onready var camera = $Path/PathFollow/CameraPos/Camera
 var bullet = preload("res://scene/bullet.tscn")
 
 var _speed: Vector2
+var _score_tick = 0
 
 func _ready():
 	set_physics_process(true)
 	camera.current = true
 
 func _physics_process(delta):
+	_score_tick += delta
+	if _score_tick > 0.1:
+		_score_tick = 0
+		GameState.add_energy_score()
+		
 	var mul = clamp(GameState.speed * 0.5, 1.0, 8.0)
 	pathfollow.unit_offset = clamp(pathfollow.unit_offset + _speed.x * delta * mul, 0, 1)
 	_speed.x = lerp(_speed.x, 0, delta * 10 * mul)

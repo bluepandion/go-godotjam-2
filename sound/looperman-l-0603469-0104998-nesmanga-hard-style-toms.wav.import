@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/looperman-l-0603469-0104998-nesmanga-hard-style-toms.wav-46ceedcb41b1c37d342f8b0ae709f937.sample"
+
+[deps]
+
+source_file="res://sound/looperman-l-0603469-0104998-nesmanga-hard-style-toms.wav"
+dest_files=[ "res://.import/looperman-l-0603469-0104998-nesmanga-hard-style-toms.wav-46ceedcb41b1c37d342f8b0ae709f937.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

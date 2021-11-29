@@ -26,7 +26,7 @@ func initialize(transform, _speed):
 	#print(shape.global_transform.origin)
 
 func _physics_process(_delta):
-	angular_velocity.y = .8 * GameState.speed
+	angular_velocity.y = .7 * GameState.speed
 	travel = clamp(travel + _delta*distance*drop_speed*GameState.speed,0,distance)
 	shape.transform.origin = _origin + (travel * vector.rotated(Vector3(0,0,1),angle))
 	
