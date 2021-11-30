@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://particles/plasma_ring_particles.tres" type="Material" id=1]
 [ext_resource path="res://gltf/reactor.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://script/rotator.gd" type="Script" id=3]
 [ext_resource path="res://material/plasma_ring.tres" type="Material" id=4]
@@ -11,17 +10,17 @@
 background_mode = 1
 background_color = Color( 0.121569, 0.121569, 0.215686, 1 )
 fog_enabled = true
-fog_color = Color( 0.0980392, 0.239216, 1, 1 )
+fog_color = Color( 0.0431373, 0.113725, 0.501961, 1 )
 fog_depth_begin = 0.0
-fog_depth_curve = 2.54912
+fog_depth_curve = 1.8025
 ss_reflections_enabled = true
 ssao_enabled = true
 glow_enabled = true
-glow_intensity = 0.71
-glow_strength = 1.09
-glow_bloom = 0.38
-glow_hdr_threshold = 1.71
-glow_hdr_scale = 1.83
+glow_intensity = 0.88
+glow_bloom = 0.3
+glow_blend_mode = 1
+glow_hdr_threshold = 1.24
+glow_hdr_scale = 1.0
 glow_bicubic_upscale = true
 glow_high_quality = true
 
@@ -38,8 +37,16 @@ ao_light_affect = 0.0
 ao_on_uv2 = false
 ao_texture_channel = 0
 
-[sub_resource type="QuadMesh" id=7]
+[sub_resource type="QuadMesh" id=11]
 material = ExtResource( 4 )
+size = Vector2( 2, 2 )
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 0 ), 0.0, 25.3703, 0, 0, Vector2( 0.0899183, 1 ), 1.97054, 1.97054, 0, 0, Vector2( 0.525886, 0.860227 ), -1.53292, -1.53292, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.0465116, 0.119186, 0.22093, 0.392442, 0.988372 )
+colors = PoolColorArray( 0, 0, 0, 1, 4.62, 2.91, 1.16, 1, 2.5, 1.95, 0.07, 1, 3.47, 0.58, 0.07, 1, 0.833496, 0.120466, 0.120466, 1, 0, 0, 0, 1 )
 
 [node name="ReactorScene" type="Spatial"]
 
@@ -60,14 +67,32 @@ skeleton = NodePath("../../..")
 mesh = ExtResource( 2 )
 material/0 = SubResource( 6 )
 
-[node name="Particles" type="Particles" parent="Playfield/Rotator"]
+[node name="Particles" type="CPUParticles" parent="Playfield/Rotator"]
 pause_mode = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0947495, 0, 0 )
-amount = 512
-lifetime = 1.85
-visibility_aabb = AABB( -60, -15, -60, 120, 30, 120 )
-process_material = ExtResource( 1 )
-draw_pass_1 = SubResource( 7 )
+cast_shadow = 0
+amount = 800
+lifetime = 1.5
+mesh = SubResource( 11 )
+emission_shape = 5
+emission_ring_radius = 37.0
+emission_ring_inner_radius = 34.0
+emission_ring_height = 2.0
+emission_ring_axis = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.0
+initial_velocity_random = 0.48
+angular_velocity = 90.95
+angular_velocity_random = 0.52
+radial_accel = 0.5
+radial_accel_random = 0.18
+angle = 128.8
+angle_random = 1.0
+scale_amount = 2.0
+scale_amount_random = 0.8
+scale_amount_curve = SubResource( 10 )
+color_ramp = SubResource( 8 )
+hue_variation = 0.03
 script = ExtResource( 6 )
 
 [node name="Pillars" type="Spatial" parent="Playfield/Rotator"]

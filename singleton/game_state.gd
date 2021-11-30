@@ -18,8 +18,8 @@ var speed: float = 1.0
 var speed_step: float = 1.0
 var high_score = 10000
 
-const SPEED_STEPPER = 0.95
-const SPEED_INCREASE = 0.07
+const SPEED_STEPPER = 0.97
+const SPEED_INCREASE = 0.055
 const HEAT_INCREASE = 0.02
 
 func main_menu():

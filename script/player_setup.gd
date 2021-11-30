@@ -29,8 +29,8 @@ func _physics_process(delta):
 		if 	Input.is_action_pressed("ui_right"):
 			#_speed.x = 1
 			_speed.x = lerp(_speed.x, 1, delta * 80 * mul)
-		if Input.is_action_just_pressed("ui_select"):
-			shoot()	
+#		if Input.is_action_just_pressed("ui_select"):
+#			shoot()	
 	if Input.is_action_pressed("ui_escape"):
 		queue_free()
 		GameState.main_menu()

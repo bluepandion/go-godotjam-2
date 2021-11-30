@@ -16,7 +16,7 @@ func _process(delta):
 	e += GameState.heat * 0.5
 	e += light_add_damage
 	e += light_add_score
-	c = c.blend(Color(0, 1.5, 0, light_add_score) * 1.0)
+	c = c.blend(Color(0, 1.0, 0, light_add_score) * 1.0)
 	e += light_add_score
 	
 	light_color = c

@@ -22,7 +22,8 @@ dof_blur_far_quality = 2
 glow_enabled = true
 glow_intensity = 0.71
 glow_strength = 1.09
-glow_bloom = 0.38
+glow_bloom = 0.17
+glow_blend_mode = 1
 glow_hdr_threshold = 1.71
 glow_hdr_scale = 1.83
 glow_bicubic_upscale = true
@@ -48,6 +49,20 @@ anchor_right = 1.0
 anchor_bottom = 0.2
 custom_fonts/font = ExtResource( 4 )
 text = "Tokamak Rider"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="CanvasLayer/Control"]
+modulate = Color( 0.819608, 0.12549, 0.286275, 1 )
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.1
+margin_top = 84.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 7 )
+text = "Go Godot Jam 2"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -79,8 +94,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 7 )
-text = "LEFT, RIGHT arrow keys to move
-SPACE to shoot coolant"
+text = "LEFT, RIGHT arrow keys to move"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -95,10 +109,9 @@ margin_bottom = 14.0
 custom_fonts/font = ExtResource( 7 )
 text = "
 
-
 Collect plasma balls for high score
-
-Shoot at overheated cooling towers to maintain heat levels"
+Escaped plasma will overheat the reactor
+"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

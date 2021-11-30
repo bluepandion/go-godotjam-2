@@ -57,11 +57,11 @@ up = "../../../Up"
 [node name="Player" parent="Path/PathFollow/PlayerPos" instance=ExtResource( 3 )]
 
 [node name="OmniLight2" type="OmniLight" parent="Path/PathFollow/PlayerPos"]
-transform = Transform( -0.0345139, -0.999267, 0.0165569, -0.999383, 0.0344002, -0.00710032, 0.00652556, -0.0167917, -0.999838, -0.77697, 5.10389, -0.0639186 )
+transform = Transform( -0.0345139, -0.999267, 0.0165569, -0.999383, 0.0344002, -0.00710032, 0.00652556, -0.0167917, -0.999838, -0.74311, 6.08434, -0.0703206 )
 light_energy = 0.5
 light_specular = 7.459
 light_bake_mode = 0
-omni_range = 10.0
+omni_range = 11.0
 script = ExtResource( 13 )
 
 [node name="CatchArea" type="Area" parent="Path/PathFollow/PlayerPos"]
@@ -152,6 +152,8 @@ anchor_left = 0.05
 anchor_top = 0.025
 anchor_right = 0.3
 anchor_bottom = 0.025
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 11 )
 text = "Energy output
 "
@@ -167,6 +169,8 @@ anchor_top = 0.025
 anchor_right = 0.3
 anchor_bottom = 0.025
 margin_top = 30.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 11 )
 text = "0
 "
@@ -181,6 +185,8 @@ anchor_left = 0.7
 anchor_top = 0.025
 anchor_right = 0.95
 anchor_bottom = 0.025
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 11 )
 text = "Heat
 "
@@ -196,6 +202,8 @@ anchor_top = 0.025
 anchor_right = 0.95
 anchor_bottom = 0.025
 margin_top = 30.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 11 )
 text = "0
 "
@@ -212,6 +220,8 @@ anchor_bottom = 0.1
 margin_left = -0.200012
 margin_right = -0.400024
 margin_bottom = 10.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 11 )
 text = "Score
 "
@@ -226,6 +236,8 @@ anchor_top = 0.025
 anchor_right = 0.7
 anchor_bottom = 0.025
 margin_top = 30.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 11 )
 text = "0
 "
