@@ -102,7 +102,7 @@ bus = "game"
 [node name="SfxDie" type="AudioStreamPlayer3D" parent="Path/PathFollow/CameraPos/Camera"]
 transform = Transform( -0.0345181, -0.9994, 0.00286887, -0.98688, 0.0336324, -0.157915, 0.157724, -0.00828216, -0.987449, 0, 0, 0 )
 stream = ExtResource( 17 )
-unit_db = 1.0
+max_db = -4.0
 bus = "game"
 
 [node name="PathFollowCamera" type="PathFollow" parent="Path"]

@@ -17,7 +17,7 @@ func _process(_delta):
 		lifetime = 1.5 - (splash * 0.5)
 		emission_ring_radius = 37
 		emission_ring_height = 1.0 + GameState.heat * 16.0
-		scale_amount = 2 + GameState.heat * 4.0 + splash * 2
+		scale_amount = 4 + GameState.heat * 3.0 + splash * 2
 	splash = clamp(splash - _delta, 0, 1)
 		
 func _heat_increased():

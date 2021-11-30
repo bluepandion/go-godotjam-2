@@ -14,6 +14,7 @@ roughness = 0.78
 transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0 )
 
 [node name="Mover" type="Area" parent="."]
+visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Mover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77636e-15, 0, -2.24399 )
@@ -25,4 +26,5 @@ material/0 = SubResource( 14 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Mover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.50924 )
+visible = false
 shape = SubResource( 13 )

@@ -1,0 +1,10 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+albedo_color = Color( 0.333333, 0.517647, 0.666667, 1 )
+metallic = 0.86
+roughness = 0.64
+ao_enabled = true
+ao_light_affect = 0.0
+ao_on_uv2 = false
+ao_texture_channel = 0

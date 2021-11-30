@@ -14,7 +14,7 @@ onready var targets = [
 		$Origin/Target4
 		]
 
-var spread = PI/4
+var spread = PI/3.5
 var interval = 1.0
 var time = 1.5
 var _base_transform
