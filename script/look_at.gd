@@ -5,7 +5,7 @@ export(NodePath) var target setget set_target
 export(NodePath) var up setget set_up
 var _target
 var _up
-var prev_pos: Vector3
+var prev_pos
 
 func _ready():	
 	set_target(target)

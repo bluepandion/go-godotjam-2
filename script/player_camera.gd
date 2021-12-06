@@ -8,7 +8,7 @@ var time = duration
 
 func _ready():
 	set_process(true)
-	assert( GameState.connect("game_over", self, "_game_over") == OK )
+	GameState.connect("game_over", self, "_game_over")
 
 func _process(delta):
 	time -= delta

@@ -2,13 +2,12 @@ extends Node
 
 var arp = -80
 var drum = -80
-var boop = -80
 
 func _ready():	
 	set_process(true)
-	assert( GameState.connect("game_over", self, "_game_over") == OK )
-	assert( GameState.connect("game_started", self, "_game_started") == OK )
-	assert( GameState.connect("main_menu", self, "_main_menu") == OK )
+	GameState.connect("game_over", self, "_game_over")
+	GameState.connect("game_started", self, "_game_started")
+	GameState.connect("main_menu", self, "_main_menu")
 
 func _process(delta):
 	AudioServer.set_bus_volume_db(1, 

@@ -6,7 +6,7 @@ var _life: float = 0.5
 func _ready():
 	pass
 
-func initialize(position: Vector3, speed: float):
+func initialize(position: Vector3, _speed: float):
 	$CollisionShape.transform.origin = position
 	angular_velocity.y = -3 * GameState.speed
 	set_physics_process(true)

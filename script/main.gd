@@ -5,11 +5,10 @@ const main_menu = preload("res://scene/main_menu.tscn")
 
 var game
 var mainmenu
-var gameover
 
 func _ready():
-	assert( GameState.connect("game_started", self, "_game_started") == OK )
-	assert( GameState.connect("main_menu", self, "_main_menu") == OK )	
+	GameState.connect("game_started", self, "_game_started")
+	GameState.connect("main_menu", self, "_main_menu")
 	GameState.main_menu()
 
 func _main_menu():

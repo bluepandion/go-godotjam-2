@@ -5,7 +5,7 @@ var splash = 0
 func _ready():
 	emitting = true
 	set_process(true)
-	assert( GameState.connect("heat_increased", self, "_heat_increased") == OK)
+	GameState.connect("heat_increased", self, "_heat_increased")
 
 func _process(_delta):	
 	if GameState.speed < 0.1:

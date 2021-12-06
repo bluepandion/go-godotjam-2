@@ -1,9 +1,7 @@
 extends Node
 
 signal energy_increased
-signal energy_decreased
 signal heat_increased
-signal heat_decreased
 signal speed_changed
 signal score_changed
 signal hud_updated
@@ -11,11 +9,11 @@ signal game_started
 signal game_over
 signal main_menu
 
-var score: int = 0
-var heat: float = 0
-var energy: float = 0
-var speed: float = 1.0
-var speed_step: float = 1.0
+var score = 0
+var heat = 0
+var energy = 0
+var speed = 1.0
+var speed_step = 1.0
 var high_score = 10000
 
 const SPEED_STEPPER = 0.97

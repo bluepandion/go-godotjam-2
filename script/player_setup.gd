@@ -6,7 +6,7 @@ onready var camera = $Path/PathFollow/CameraPos/Camera
 
 var bullet = preload("res://scene/bullet.tscn")
 
-var _speed: Vector2
+var _speed = Vector2(0,0)
 var _score_tick = 0
 
 func _ready():

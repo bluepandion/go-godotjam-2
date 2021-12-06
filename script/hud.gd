@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 func _init():
-	assert( GameState.connect("hud_updated", self, "_hud_updated") == OK )
-	assert( GameState.connect("game_over", self, "_game_over") == OK )
+	GameState.connect("hud_updated", self, "_hud_updated")
+	GameState.connect("game_over", self, "_game_over")
 
 func _hud_updated():
 	$Energy.text = "  " + str( int(GameState.speed * 100) ) + " %"

@@ -7,13 +7,12 @@ var distance = 12
 var drop_speed = 1.5
 var speed = 1
 var _origin: Vector3
-var angle: float
-var vector: Vector3 = Vector3(1,0,0)
+var angle = 0.0
+var vector= Vector3(1,0,0)
 var travel = 0
 
 func _init():
-	connect("body_entered", self, "_body_entered")
-	#connect("area_entered", self, "_area_entered")
+	connect("body_entered", self, "_body_entered")	
 
 func _ready():		
 	set_physics_process(true)	

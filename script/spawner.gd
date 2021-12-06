@@ -1,18 +1,10 @@
 extends Position3D
 
-export(float, 0, 2) var dispersion = 0.1
 export(NodePath) var rotator
 
 var plasma_ball = preload("res://scene/plasma_ball.tscn")
 
 onready var origin = $Origin
-onready var targets = [
-		$Origin/Target0,
-		$Origin/Target1,
-		$Origin/Target2,
-		$Origin/Target3,
-		$Origin/Target4
-		]
 
 var spread = PI/3.5
 var interval = 1.0

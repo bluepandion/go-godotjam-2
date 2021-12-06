@@ -4,8 +4,8 @@ var light_add_damage = 0
 var light_add_score = 0
 
 func _ready():
-	assert( GameState.connect("heat_increased", self, "_heat_increased") == OK )
-	assert( GameState.connect("energy_increased", self, "_energy_increased") == OK )
+	GameState.connect("heat_increased", self, "_heat_increased")
+	GameState.connect("energy_increased", self, "_energy_increased")
 	
 	set_process(true)
 
